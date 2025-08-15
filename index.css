@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dragon Theme - Dark Professional with Gold Accents */
+    --background: 45 10% 4%;
+    --foreground: 45 80% 92%;
+
+    --card: 45 15% 8%;
+    --card-foreground: 45 75% 88%;
+
+    --popover: 45 20% 6%;
+    --popover-foreground: 45 80% 90%;
+
+    --primary: 45 90% 65%;
+    --primary-foreground: 45 20% 8%;
+
+    --secondary: 45 15% 12%;
+    --secondary-foreground: 45 70% 85%;
+
+    --muted: 45 10% 10%;
+    --muted-foreground: 45 40% 60%;
+
+    --accent: 45 85% 70%;
+    --accent-foreground: 45 20% 10%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 120 60% 50%;
+    --success-foreground: 120 20% 10%;
+
+    --border: 45 20% 15%;
+    --input: 45 15% 12%;
+    --ring: 45 90% 65%;
+
+    --radius: 0.75rem;
+    
+    /* Dragon specific colors */
+    --dragon-gold: 45 90% 65%;
+    --dragon-black: 45 20% 8%;
+    --dragon-scale: 45 30% 20%;
+    --profit: 120 60% 50%;
+    --loss: 0 75% 55%;
+    --neutral: 45 40% 60%;
+    --warning: 38 95% 55%;
+    --info: 217 91% 60%;
+    
+    /* Dragon Scale Gradients and Effects */
+    --dragon-gradient: linear-gradient(135deg, hsl(var(--dragon-gold)) 0%, hsl(var(--accent)) 50%, hsl(var(--dragon-gold)) 100%);
+    --dragon-shadow: 0 8px 32px hsl(var(--dragon-gold) / 0.3);
+    --dragon-glow: 0 0 20px hsl(var(--dragon-gold) / 0.5);
+    --scale-pattern: 
+      conic-gradient(from 0deg at 50% 30%, 
+        hsl(45 100% 50%) 0deg 2deg,
+        hsl(45 20% 8%) 2deg 178deg,
+        hsl(45 100% 50%) 178deg 180deg,
+        hsl(45 20% 8%) 180deg 358deg,
+        hsl(45 100% 50%) 358deg 360deg),
+      conic-gradient(from 180deg at 50% 70%, 
+        hsl(45 100% 50%) 0deg 2deg,
+        hsl(45 20% 8%) 2deg 178deg,
+        hsl(45 100% 50%) 178deg 180deg,
+        hsl(45 20% 8%) 180deg 358deg,
+        hsl(45 100% 50%) 358deg 360deg),
+      repeating-linear-gradient(60deg,
+        hsl(45 20% 8%) 0px,
+        hsl(45 20% 8%) 20px,
+        hsl(45 100% 50% / 0.3) 20px,
+        hsl(45 100% 50% / 0.3) 22px,
+        hsl(45 20% 8%) 22px,
+        hsl(45 20% 8%) 40px),
+      repeating-linear-gradient(-60deg,
+        hsl(45 20% 8%) 0px,
+        hsl(45 20% 8%) 20px,
+        hsl(45 100% 50% / 0.3) 20px,
+        hsl(45 100% 50% / 0.3) 22px,
+        hsl(45 20% 8%) 22px,
+        hsl(45 20% 8%) 40px);
+    --scale-texture: 
+      radial-gradient(ellipse 15px 8px at 50% 50%, 
+        hsl(45 20% 8%), 
+        hsl(45 100% 50% / 0.4) 70%, 
+        transparent 100%);
+    
+    /* Shadows and effects */
+    --shadow-glow: 0 0 20px hsl(var(--dragon-gold) / 0.3);
+    --shadow-card: 0 4px 12px hsl(45 20% 2% / 0.6);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 45 15% 6%;
+    --sidebar-foreground: 45 75% 88%;
+    --sidebar-primary: 45 90% 65%;
+    --sidebar-primary-foreground: 45 20% 8%;
+    --sidebar-accent: 45 20% 12%;
+    --sidebar-accent-foreground: 45 75% 88%;
+    --sidebar-border: 45 25% 18%;
+    --sidebar-ring: 45 90% 65%;
+  }
+
+  .dark {
+    /* Enhanced Dragon Theme for Dark Mode */
+    --background: 45 15% 2%;
+    --foreground: 45 85% 95%;
+    --card: 45 20% 6%;
+    --card-foreground: 45 80% 92%;
+    --dragon-shadow: 0 8px 32px hsl(var(--dragon-gold) / 0.4);
+    --dragon-glow: 0 0 25px hsl(var(--dragon-gold) / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    background-image: var(--scale-pattern);
+    background-attachment: fixed;
+    background-size: 40px 40px, 40px 40px, 40px 40px, 40px 40px;
+  }
+}
+
+@layer components {
+  .dragon-card {
+    @apply bg-card border-2 rounded-lg shadow-lg relative overflow-hidden;
+    border-color: hsl(var(--dragon-gold) / 0.3);
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card) / 0.9) 100%);
+    box-shadow: var(--dragon-shadow);
+  }
+  
+  .dragon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--scale-texture);
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .dragon-scale-pattern {
+    background-image: var(--scale-pattern);
+    background-size: 40px 40px;
+  }
+  
+  .dragon-title {
+    font-family: 'Cinzel', serif;
+    @apply text-primary font-bold tracking-wider;
+    text-shadow: 0 0 10px hsl(var(--dragon-gold) / 0.8);
+  }
+  
+  .dragon-glow {
+    box-shadow: var(--dragon-glow);
+  }
+  
+  .dragon-border {
+    border: 2px solid hsl(var(--dragon-gold) / 0.5);
+    box-shadow: inset 0 0 20px hsl(var(--dragon-gold) / 0.1);
+  }
+  
+  .dragon-symbol-card {
+    @apply dragon-card transition-all duration-300 hover:scale-105;
+    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--dragon-scale)) 100%);
+  }
+  
+  .dragon-symbol-card:hover {
+    box-shadow: var(--dragon-glow), var(--dragon-shadow);
+    border-color: hsl(var(--dragon-gold) / 0.8);
+  }
+}

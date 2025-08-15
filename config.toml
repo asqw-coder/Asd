@@ -1,0 +1,4 @@
+project_id = "bggaeemkonwbdqgrklzn"
+
+[functions.send-trading-report]
+verify_jwt = false
